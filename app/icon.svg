@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="hk-auth-icon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f8fbf"/>
+      <stop offset="1" stop-color="#123f50"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="url(#hk-auth-icon)"/>
+  <circle cx="32" cy="26.5" r="7.5" fill="#ffffff"/>
+  <path d="M29.2 32.6h5.6l2.9 12.9a1.6 1.6 0 0 1-1.6 2h-8.2a1.6 1.6 0 0 1-1.6-2Z" fill="#ffffff"/>
+</svg>

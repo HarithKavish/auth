@@ -1,0 +1,47 @@
+import type { Metadata, Viewport } from 'next';
+import { themeInitScript } from '@/components/theme-toggle';
+import { site } from '@/lib/config/site';
+import './globals.css';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: site.fullName,
+    template: `%s · ${site.fullName}`,
+  },
+  description: site.summary,
+  applicationName: site.fullName,
+  openGraph: {
+    type: 'website',
+    siteName: site.fullName,
+    title: site.fullName,
+    description: site.summary,
+    url: site.url,
+  },
+  /*
+   * An authentication endpoint has nothing to gain from being indexed, and a
+   * sign-in page ranking in search results is a gift to anyone building a
+   * lookalike. Users should arrive here from an application, never from a
+   * search engine.
+   */
+  robots: { index: false, follow: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f9fb' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b1014' },
+  ],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Applies the stored theme before first paint to avoid a flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
