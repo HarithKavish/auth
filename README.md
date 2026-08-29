@@ -12,7 +12,7 @@ It does not create accounts, and it is not an account dashboard. That is the
 | Domain | `account.harithkavish.com` | `auth.harithkavish.com` |
 | Owns | The user's account: user ID, password hash, names, passkeys | Nothing about the user |
 | Answers | "Who is this user and what is their account?" | "Has this user authenticated for this application?" |
-| User creates an account | Yes | **Never** — links out to Account |
+| User creates an account | Yes | **Never itself** — links out to Account, or asks Account to create one on a first federated sign-in |
 
 ```
                     HarithKavish Account
@@ -26,6 +26,18 @@ It does not create accounts, and it is not an account dashboard. That is the
             ▼               ▼               ▼
           Forge           Nexus             VR
 ```
+
+## The contract
+
+Auth and Account are specified by one reconciled document, held in the Account
+repository. See [docs/CONTRACT.md](docs/CONTRACT.md) — it is referenced, not
+copied.
+
+As of Canonical v1.3 that document covers **federated sign-in**: Auth runs the
+provider flow and verifies the assertion, Account owns the resulting link and the
+account it belongs to. A HarithKavish account remains the identity; Google is a
+way to prove it. Auth is the only thing in the ecosystem that talks to an
+external provider.
 
 ## Status: Phase 1 — website only
 
