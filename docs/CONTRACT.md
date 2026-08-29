@@ -21,7 +21,16 @@ which is the failure this file exists to record, not repeat.
 | Ceremonies | §7 — WebAuthn, recovery, and federated sign-in |
 | Failure behaviour | §11 — 15-minute bounded grace, security state only |
 
-## This service is folding into Account
+## This service has folded into Account
+
+**[FACT] `auth.harithkavish.com` is served by the Account deployment.** DNS
+points at Vercel, the sign-in page answers there, and this repository no longer
+publishes the hostname — its `public/CNAME` is gone, so GitHub Pages has
+released it.
+
+What remains here is the record: this document, and a README describing what the
+authentication half is responsible for wherever it runs.
+
 
 Under **§0.5**, Account and Auth are **one deployable at one origin**,
 `account.harithkavish.com`. The ownership boundary between them is retained, in
