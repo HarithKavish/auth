@@ -27,7 +27,13 @@ It does not create accounts, and it is not an account dashboard. That is the
           Forge           Nexus             VR
 ```
 
-## Where this is going
+## This site no longer deploys
+
+`auth.harithkavish.com` is served by the Account deployment. This repository
+stopped publishing the hostname when the halves became one deployable; what is
+left is the reasoning, not a running site.
+
+## Where this went
 
 Auth and Account are **one deployable** at `account.harithkavish.com`, with the
 ownership boundary kept in code (contract §0.5, §15). This origin remains as an
