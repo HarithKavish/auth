@@ -27,6 +27,15 @@ It does not create accounts, and it is not an account dashboard. That is the
           Forge           Nexus             VR
 ```
 
+## Where this is going
+
+Auth and Account are **one deployable** at `account.harithkavish.com`, with the
+ownership boundary kept in code (contract §0.5, §15). This origin remains as an
+alias, and the split stays available.
+
+What is written below about *what Auth is responsible for* is unchanged — it
+describes the authentication half, wherever it runs.
+
 ## The contract
 
 Auth and Account are specified by one reconciled document, held in the Account

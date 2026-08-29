@@ -3,7 +3,7 @@
 Auth and Account are specified by one reconciled document:
 
 **[`docs/account-auth-canonical-contract.md`](https://github.com/HarithKavish/account/blob/main/docs/account-auth-canonical-contract.md)**
-in the Account repository — Canonical **v1.3**.
+in the Account repository — Canonical **v1.5**.
 
 It is not copied here. One authoritative source, referenced rather than
 duplicated, is how the ecosystem avoids two contracts that slowly disagree —
@@ -20,6 +20,28 @@ which is the failure this file exists to record, not repeat.
 | Service authentication | §3 — asymmetric signed assertions, `private_key_jwt`, no shared secret |
 | Ceremonies | §7 — WebAuthn, recovery, and federated sign-in |
 | Failure behaviour | §11 — 15-minute bounded grace, security state only |
+
+## This service is folding into Account
+
+Under **§0.5**, Account and Auth are **one deployable at one origin**,
+`account.harithkavish.com`. The ownership boundary between them is retained, in
+code rather than across a network.
+
+Everything this repository was going to be responsible for still exists — the
+authorization server, the ceremonies, the token lifetimes. It runs in the same
+process as the half that owns the user, so there is no service assertion to sign
+and no outage to survive between them.
+
+**The WebAuthn RP ID moved to `account.harithkavish.com`** while no passkey
+existed. V11 called that irreversible, and it is — from the first registered
+passkey, which is why the decision had to be taken before one was.
+
+`auth.harithkavish.com` stays as an alias. Nothing pointing at it breaks, and
+splitting the halves apart later remains a refactor rather than a rewrite.
+
+**§15 lists what folding removes**: §3 service authentication, §11.1 outage
+grace, the replay cache, the topology question, most of the timeout budget —
+four open questions closed and one reduced.
 
 ## Status
 
